@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Reveal Your Note in the Parasitology Exam</title>
+    <link rel="stylesheet" href="styles.css?v=1.0.1">
+</head>
+<body>
+    <div id="progress"></div>
+    <div class="container">
+        <h1>Révélez votre note à l'examen de parasitologie</h1>
+        <form id="exam-form">
+            <div id="questions-container"></div>
+            <button type="submit" class="btn-submit">Soumettre</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <!-- Modal -->
+    <div id="result-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="close-modal-btn" class="modal-close">&times;</span>
+                <h2>Résultat de l'examen</h2>
+            </div>
+            <div class="modal-body">
+                <p id="modal-message">Modal message goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="modal-close-btn" class="btn-submit">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="back-to-top" class="back-to-top">&#8593;</div>
+
+    <script src="scripts.js?v=1.0.1"></script>
+    <script>
+        // Scroll progress indicator function
+        window.addEventListener('scroll', function() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("progress").style.width = scrolled + "%";
+        });
+
+        // Back to Top button functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.getElementById('back-to-top');
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopButton.style.display = 'block';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
